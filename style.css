@@ -131,8 +131,8 @@ body {
             white-space: nowrap;
         }
 
-        .date {
-            font-size: .8em;
+        .date, .size {
+            font-size: .7em;
             color: var(--text-color);
         }
 

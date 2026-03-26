@@ -20,6 +20,18 @@ if ($storageExists) {
     $files = array_map(function ($file) use ($storagePath) {
         return [
             'name' => $file,
+            'size' => (function () use ($storagePath, $file) {
+                $size = filesize($storagePath . "/$file");
+                if ($size >= 1024 * 1024 * 1024) {
+                    return round($size / (1024 * 1024 * 1024), 2) . ' GB';
+                } elseif ($size >= 1024 * 1024) {
+                    return round($size / (1024 * 1024), 2) . ' MB';
+                } elseif ($size >= 1024) {
+                    return round($size / 1024, 2) . ' KB';
+                } else {
+                    return $size . ' B';
+                }
+            })(),
             'created_at' => filectime($storagePath . "/$file"),
             'type' => (function () use ($storagePath, $file) {
                 $mimeType = mime_content_type($storagePath . "/$file");
@@ -110,6 +122,7 @@ if ($storageExists) {
                         <?php endif; ?>
                         <span class="filename"><?php echo htmlspecialchars($file['name']); ?></span>
                         <span class="date"><?php echo date('Y-m-d H:i:s', $file['created_at']); ?></span>
+                        <span class="size"><?php echo $file['size'] ?></span>
                     </a>
                 <?php endforeach; ?>
             </div>
