@@ -80,7 +80,11 @@ if ($storageExists) {
         <?php if (!$storageExists): ?>
             <p>Storage directory does not exist.</p>
         <?php elseif ($isStorageEmpty): ?>
-            <p>The storage directory is empty.</p>
+            <?php if (isset($_GET['search'])): ?>
+                <p>No files were found.</p>
+            <?php else: ?>
+                <p>The storage directory is empty.</p>
+            <?php endif; ?>
         <?php else: ?>
             <div id="files">
                 <?php foreach ($files as $file): ?>
