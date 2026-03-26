@@ -3,6 +3,9 @@
 $storagePath = __DIR__ . '/storage';
 $storageExists = is_dir($storagePath);
 
+$isStorageEmpty = false;
+$files = [];
+
 if ($storageExists) {
     $files = scandir($storagePath);
     $files = array_filter($files, function ($file) use ($storagePath) {
