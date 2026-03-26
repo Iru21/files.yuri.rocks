@@ -65,16 +65,18 @@ if ($storageExists) {
         </a>
         <header>
             <h1>Files</h1>
-            <form>
-                <label>
-                    Search
-                    <input type="text" name="search" placeholder="..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" />
-                </label>
-                <button type="submit">Submit</button>
-                <?php if (isset($_GET['search'])): ?>
-                    <a href="?">Clear</a>
-                <?php endif; ?>
-            </form>
+            <?php if ($storageExists && !$isStorageEmpty): ?>
+                <form>
+                    <label>
+                        Search
+                        <input type="text" name="search" placeholder="..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" />
+                    </label>
+                    <button type="submit">Submit</button>
+                    <?php if (isset($_GET['search'])): ?>
+                        <a href="?">Clear</a>
+                    <?php endif; ?>
+                </form>
+            <?php endif; ?>
         </header>
 
         <?php if (!$storageExists): ?>
