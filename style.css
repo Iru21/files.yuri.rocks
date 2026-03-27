@@ -52,7 +52,7 @@ html {
 
 body {
     /*stick background at constant size when scrolling*/
-    background-image: url("images/bg.webp");
+    background-image: url("images/bg.png");
     background-attachment: fixed;
     background-size: cover;
     color: var(--text-color);
