@@ -107,28 +107,32 @@ body {
 }
 
 #files {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 
     .file {
         background-color: var(--background-color);
         position: relative;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        gap: 20px;
         align-items: center;
-        height: 120px;
-        width: 120px;
         border: 1px dashed var(--secondary-color);
         border-radius: 2px;
         text-align: center;
+        padding: 2px 10px;
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            image-rendering: pixelated;
+        }
 
         .filename {
-            width: 80%;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            margin-right: auto;
         }
 
         .date, .size {
