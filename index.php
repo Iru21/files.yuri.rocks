@@ -32,7 +32,7 @@ if ($storageExists) {
                     return $size . ' B';
                 }
             })(),
-            'created_at' => filectime($storagePath . "/$file"),
+            'created_at' => filemtime($storagePath . "/$file"),
             'type' => (function () use ($storagePath, $file) {
                 $mimeType = mime_content_type($storagePath . "/$file");
                 if (str_starts_with($mimeType, 'image/')) {
